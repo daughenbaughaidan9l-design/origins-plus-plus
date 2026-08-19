@@ -6,7 +6,6 @@
 		"chest":{
 			"type":"origins:ingredient",
 			"ingredient":{
-				"tag":"origins-plus-plus:wings"
 			}
 		}
 	},
