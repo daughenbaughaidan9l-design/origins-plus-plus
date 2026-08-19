@@ -1,18 +1,35 @@
 {
-	"type":"origins:multiple",
-	"scale":{
-		"type":"origins:action_over_time",
-		"entity_action":{
-			"type":"origins:execute_command",
-			"command":"function origins-plus-plus:giant/size"
+	"type":"origins:action_over_time",
+	"hidden":true,
+	"entity_action":{
+		"type":"origins:if_else",
+		"condition":{
+			"type":"origins:resource",
+			"resource":"origins-plus-plus:wandering-spirit/size_resource",
+			"comparison":"<",
+			"compare_to":1
 		},
-		"interval":20
-	},
-	"reset":{
-		"type":"origins:action_on_callback",
-		"entity_action_lost":{
+		"if_action":{
 			"type":"origins:execute_command",
-			"command":"scale reset"
+			"command":"function origins-plus-plus:wandering-spirit/small"
+		},
+		"else_action":{
+			"type":"origins:if_else",
+			"condition":{
+				"type":"origins:resource",
+				"resource":"origins-plus-plus:wandering-spirit/size_resource",
+				"comparison":">",
+				"compare_to":1
+			},
+			"if_action":{
+				"type":"origins:execute_command",
+				"command":"function origins-plus-plus:wandering-spirit/large"
+			},
+			"else_action":{
+				"type":"origins:execute_command",
+				"command":"function origins-plus-plus:wandering-spirit/normal"
+			}
 		}
-	}
+	},
+	"interval":20
 }
